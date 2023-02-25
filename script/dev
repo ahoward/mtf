@@ -1,0 +1,72 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'English'
+
+USAGE = <<-____
+
+  ./script/dev fires up all services required to run the application
+
+    * with the exception of postgresql and redis
+    * see .tmuxinator.yml for details
+    * customize your own config at .tmuxinator/$(whoami).yml
+
+  it runs all services in a full blown terminal via tmux/tmuxinator
+
+    * https://github.com/tmux/tmux #=> brew install tmux
+    * https://github.com/tmuxinator/tmuxinator #=> gem install tmuxinator
+
+  because each service is run in an interactive terminal, one can easily start
+  an interactive debugger, hit 'Ctrl-c' to kill something, and then 'up arrow'
+  to restart it, etc.
+
+  note that some people will have a local tmux config, this script respects it
+
+  the only commands you really need to know are
+
+    'switch to the next pane'
+      type: <Ctrl>-b n
+
+    'switch to the previous pane'
+      type: <Ctrl-b> p
+
+    'kill all services / exit and good riddance!
+      type: <Ctrl-b> :kill-session
+
+  NOTE: many setups will use <Ctrl-a> vs. <Ctrl-b>, `man tmux` for more info
+
+  this will let you cycle between all the services the application requires,
+  and to interact with each of them 'normally', and start/re-start each of
+  them as needed.
+
+____
+
+#
+# ./script/dev should fire up everything the app needs to dev.  in particular,
+# it should provide a way to interact on the console with any/all processees
+# that need interacting with.  eg.  rails, yarn, whatever, etc.
+#
+
+script_f = File.expand_path(__FILE__)
+script_d = File.dirname(script_f)
+root_d = File.dirname(script_d)
+
+Dir.chdir(root_d)
+
+help = ARGV.delete('-h') || ARGV.delete('--help') || ARGV.delete('help')
+
+if help
+  puts USAGE
+  exit 42
+end
+
+username = ENV['USER']
+if username && File.exists?(".tmuxinator/#{username}.yml")
+  config = ".tmuxinator/#{username}.yml"
+else
+  config = '.tmuxinator.yml'
+end
+
+dir = File.basename(Dir.pwd)
+command = "PATH=./bin:$PATH bundle exec tmuxinator start project #{dir} --project-config=#{config}"
+system(command) || abort("#{command} #=> #{$CHILD_STATUS}")

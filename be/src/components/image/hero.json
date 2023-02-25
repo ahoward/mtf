@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_hero_heroes",
+  "info": {
+    "displayName": "hero",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "lead": {
+      "type": "string",
+      "default": "Lead sentence...",
+      "required": true
+    },
+    "copy": {
+      "type": "richtext",
+      "default": "Copy for the hero image...",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
