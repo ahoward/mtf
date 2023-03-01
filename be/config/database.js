@@ -14,11 +14,19 @@ const envPath = (env, envKey, defaultPath) => {
   return envPath;
 };
 
+const NODE_ENV = process.env.NODE_ENV || "development";
+
 module.exports = ({ env }) => ({
   connection: {
     client: "sqlite",
     connection: {
-      filename: envPath(env, "DATABASE_FILENAME", ".tmp/data.db"),
+      filename: envPath(
+        env,
+        "DATABASE_FILENAME",
+        NODE_ENV === "production"
+          ? "/data/strapi/development/sqlite.db"
+          : ".tmp/data.db"
+      ),
     },
     useNullAsDefault: true,
   },

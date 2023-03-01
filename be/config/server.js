@@ -14,6 +14,8 @@ const envPath = (env, envKey, defaultPath) => {
   return envPath;
 };
 
+const NODE_ENV = process.env.NODE_ENV || "development";
+
 module.exports = ({ env }) => ({
   host: env("HOST", "0.0.0.0"),
   port: env.int("PORT", 1337),
@@ -24,6 +26,10 @@ module.exports = ({ env }) => ({
     populateRelations: env.bool("WEBHOOKS_POPULATE_RELATIONS", false),
   },
   dirs: {
-    public: envPath(env, "PUBLIC_DIRECTORY", "./public"),
+    public: envPath(
+      env,
+      "PUBLIC_DIRECTORY",
+      NODE_ENV === "production" ? "/data/strapi/development/public" : "./public"
+    ),
   },
 });
