@@ -10,6 +10,6 @@ module.exports = ({ env }) => ({
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
   },
   dirs: {
-    public: fs.existsSync('/data/public') ? '/data/public' : './public'
+    public: fs.existsSync(env('PUBLIC_DIRECTORY')) ? env('PUBLIC_DIRECTORY') : './public'
   }
 });

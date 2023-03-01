@@ -4,9 +4,9 @@ services:
     env: node
     plan: starter
     buildCommand: yarn install && yarn build
-    startCommand: rsync -a public/ /data/public/ && yarn start
+    startCommand: yarn start
     disk:
-      name: strapi-data
+      name: Data
       mountPath: /data
       sizeGB: 1
     envVars:
@@ -15,7 +15,9 @@ services:
       - key: NODE_VERSION
         value: 18.4.0
       - key: DATABASE_FILENAME
-        value: /data/strapi.db
+        value: /data/strapi/production/sqlite.db
+      - key: PUBLIC_DIRECTORY
+        value:  /data/strapi/production/public
       - key: ADMIN_JWT_SECRET
         generateValue: true
         sync: false
