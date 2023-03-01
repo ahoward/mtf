@@ -9,7 +9,7 @@ const envPath = (env, envKey, defaultPath) => {
   try {
     envPath && fs.statSync(envPath);
   } catch (e) {
-    throw `${envKey}=${envPath} ### bad value`;
+    throw new Error(`${envKey}=${envPath} ### bad value`);
   }
   return envPath;
 };
@@ -29,7 +29,7 @@ module.exports = ({ env }) => ({
     public: envPath(
       env,
       "PUBLIC_DIRECTORY",
-      NODE_ENV === "production" ? "/data/strapi/development/public" : "./public"
+      NODE_ENV === "production" ? "/data/strapi/production/public" : "./public"
     ),
   },
 });

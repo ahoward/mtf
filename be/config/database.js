@@ -9,7 +9,7 @@ const envPath = (env, envKey, defaultPath) => {
   try {
     envPath && fs.statSync(envPath);
   } catch (e) {
-    throw `${envKey}=${envPath} ### bad value`;
+    throw new Error(`${envKey}=${envPath} ### bad value`);
   }
   return envPath;
 };
@@ -24,7 +24,7 @@ module.exports = ({ env }) => ({
         env,
         "DATABASE_FILENAME",
         NODE_ENV === "production"
-          ? "/data/strapi/development/sqlite.db"
+          ? "/data/strapi/production/sqlite.db"
           : ".tmp/data.db"
       ),
     },
