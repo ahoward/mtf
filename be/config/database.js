@@ -7,9 +7,11 @@ const envPath = (env, envKey, defaultPath) => {
     envPath = path.join(__dirname, "..", envPath);
   }
   try {
-    envPath && fs.statSync(envPath);
+    envPath && fs.existsSync(envPath);
   } catch (e) {
-    throw new Error(`${envKey}=${envPath} ### bad value`);
+    console.error(e.message);
+    //throw new Error(`${envKey}=${envPath} ### bad value`);
+    console.error(`${envKey}=${envPath} ### bad value`);
   }
   return envPath;
 };
