@@ -54,15 +54,34 @@ class API {
       errors.push(e);
     }
 
-    return new API.Result(response, json, ok, errors);
+    return new API.Result(this, response, json, ok, errors);
   }
 
   static Result = class Result {
-    constructor(response, json, ok, errors) {
+    constructor(api, response, json, ok, errors) {
+      this.api = api;
       this.response = response;
       this.json = json;
       this.ok = !!ok;
       this.errors = errors;
+    }
+
+    get(key_or_path) {
+      return util.get(this.json, key_or_path);
+    }
+
+    set(key_or_path, value) {
+      return util.set(this.json, key_or_path, value);
+    }
+
+    url_for(key_or_path) {
+      const value = this.get(key_or_path);
+      return api.url_for(value);
+    }
+
+    img_url_for(key_or_path) {
+      const value = this.get(key_or_path);
+      return api.img_url_for(value);
     }
   };
 

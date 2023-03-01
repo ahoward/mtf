@@ -31,7 +31,9 @@ export default function MTF(props) {
     const duration = 8000;
     const delay = 2000;
 
-    const stopAnimating = animate({
+    let stopAnimating;
+
+    const animateParams = {
       from,
       to,
       duration,
@@ -56,7 +58,19 @@ export default function MTF(props) {
         setAnimating(false);
         //stopAnimating();
       },
-    });
+    };
+
+    try {
+      stopAnimating = animate(animateParams);
+    } catch (e) {
+      setTimeout(() => {
+        if (!(e instanceof ReferenceError)) {
+          // ReferenceError: requestAnimationFrame is not defined
+          throw e;
+        }
+        setAnimating(false); // trigger re-try/render
+      }, 420);
+    }
   }
 
   return (
@@ -100,16 +114,16 @@ export default function MTF(props) {
           </g>
           <g>
             <path
-              style={{ fill: color }}
+              style={{ fill: yellow }}
               d="M111.723,217.06v41.656H99.999l-0.178-33.384l-22.018,33.384H62.331l-22.257-33.563v33.563H28.828V217.06
             H47.93l22.375,34.634l22.256-34.634H111.723z"
             />
             <path
-              style={{ fill: color }}
+              style={{ fill: yellow }}
               d="M186.022,226.463h-26.363v32.253h-11.841v-32.253h-26.481v-9.403h64.686V226.463z"
             />
             <path
-              style={{ fill: color }}
+              style={{ fill: yellow }}
               d="M250.003,236.498v8.807H208.05v13.41h-11.841V217.06h64.964v9.462H208.05v9.977H250.003z"
             />
           </g>

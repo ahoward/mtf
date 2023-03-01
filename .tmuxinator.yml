@@ -47,7 +47,7 @@ pre_window:
 windows:
   - fe:
       root: ./fe/
-      panes: next dev
+      panes: ruby -r fileutils -e 'Dir.glob(".next/*").each{|_| FileUtils.rm_rf(_)}' .next/*; next dev
   - be:
       root: ./be/
       panes: strapi develop
