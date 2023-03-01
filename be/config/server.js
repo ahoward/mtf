@@ -1,15 +1,29 @@
-const fs = require('fs');
+const path = require("path");
+const fs = require("fs");
+
+const envPath = (env, envKey, defaultPath) => {
+  let envPath = env(envKey, defaultPath);
+  if (envPath && !envPath.startsWith("/")) {
+    envPath = path.join(__dirname, "..", envPath);
+  }
+  try {
+    envPath && fs.statSync(envPath);
+  } catch (e) {
+    throw `${envKey}=${envPath} ### bad value`;
+  }
+  return envPath;
+};
 
 module.exports = ({ env }) => ({
-  host: env('HOST', '0.0.0.0'),
-  port: env.int('PORT', 1337),
+  host: env("HOST", "0.0.0.0"),
+  port: env.int("PORT", 1337),
   app: {
-    keys: env.array('APP_KEYS'),
+    keys: env.array("APP_KEYS"),
   },
   webhooks: {
-    populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
+    populateRelations: env.bool("WEBHOOKS_POPULATE_RELATIONS", false),
   },
   dirs: {
-    public: fs.existsSync(env('PUBLIC_DIRECTORY')) ? env('PUBLIC_DIRECTORY') : './public'
-  }
+    public: envPath(env, "PUBLIC_DIRECTORY", "./public"),
+  },
 });
