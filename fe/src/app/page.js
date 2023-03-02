@@ -7,7 +7,7 @@ import util from "@/lib/util";
 
 import FontAwesome from "@/components/font_awesome";
 import MTF from "@/components/mtf";
-import Navbar from "@/components/navBar";
+import Navbar from "@/components/navbar";
 
 function hero_for(data) {
   const hero = {
