@@ -123,34 +123,33 @@ export default async function Home() {
                 </div>
                 <div className="text-center mt-12">
                   <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 mb-2">
-                    Jenna Stones
+                    Matanuska Froniter Trek
                   </h3>
                   <div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
                     <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>{" "}
-                    Los Angeles, California
-                  </div>
-                  <div className="mb-2 text-gray-700 mt-10">
-                    <i className="fas fa-briefcase mr-2 text-lg text-gray-500"></i>
-                    Solution Manager - Creative Tim Officer
-                  </div>
-                  <div className="mb-2 text-gray-700">
-                    <i className="fas fa-university mr-2 text-lg text-gray-500"></i>
-                    University of Computer Science
+                    <a
+                      target="_blank"
+                      href="https://earth.google.com/web/search/palmer,+alaska/@61.62387636,-149.07089626,162.09217654a,13511.64447346d,35y,173.52647721h,60.04914728t,-0r/data=CigiJgokCT1PLZzWK0VAEdZnlMUAfjBAGckm9A1R62JAIddLONADOVvA"
+                      rel="noreferrer"
+                    >
+                      Palmer, Alaska
+                    </a>
                   </div>
                 </div>
                 <div className="mt-10 py-10 border-t border-gray-300 text-center">
                   <div className="flex flex-wrap justify-center">
                     <div className="w-full lg:w-9/12 px-4">
                       <p className="mb-4 text-lg leading-relaxed text-gray-800">
-                        An artist of considerable range, Jenna the name taken by
-                        Melbourne-raised, Brooklyn-based Nick Murphy writes,
-                        performs and records all of his own music, giving it a
-                        warm, intimate feel with a solid groove structure. An
-                        artist of considerable range.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit
+                        anim id est laborum.
                       </p>
-                      <a href="#pablo" className="font-normal text-pink-500">
-                        Show more
-                      </a>
                     </div>
                   </div>
                 </div>
