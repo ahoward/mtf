@@ -33,7 +33,7 @@ class Config {
 
     missing(key) {
       const message = `[Config.ENV] MISSING: process.env.${key}`;
-      throw message;
+      throw new Error(message);
     }
   };
 

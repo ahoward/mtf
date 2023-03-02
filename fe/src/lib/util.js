@@ -65,7 +65,7 @@ class Util {
     const path = this.has(obj, key_or_path);
 
     if (!path) {
-      throw `missing key ${JSON.stringify(key_or_path)}`;
+      throw new Error(`missing key ${JSON.stringify(key_or_path)}`);
     }
 
     return traverse(obj).get(path);
