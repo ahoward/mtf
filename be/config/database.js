@@ -13,6 +13,7 @@ const envPath = (env, envKey, defaultPath) => {
     //throw new Error(`${envKey}=${envPath} ### bad value`);
     console.error(`${envKey}=${envPath} ### bad value`);
   }
+  console.log(`${envKey}=${envPath}`);
   return envPath;
 };
 

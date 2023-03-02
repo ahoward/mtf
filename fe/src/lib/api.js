@@ -25,6 +25,8 @@ class API {
     const headers = this.headers_for(options);
     const method = this.method_for(options);
 
+    console.dir({ "api.fetch": { url: url, headers, method } });
+
     const params = {
       headers,
       method,
@@ -40,7 +42,7 @@ class API {
 
       // https://beta.nextjs.org/docs/data-fetching/fetching#static-data-fetchingmd
       if (!response.ok) {
-        throw new Error("Failed to fetch data");
+        throw new Error(`Failed to fetch data from: ${url}`);
       }
     } catch (e) {
       ok = false;
