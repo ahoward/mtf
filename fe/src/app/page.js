@@ -29,7 +29,7 @@ export default async function Home() {
 
   return (
     <>
-      <Navbar transparent />
+      <Navbar transparent active="/" />
       <main className="profile-page">
         <section className="relative block" style={{ height: "700px" }}>
           <div
