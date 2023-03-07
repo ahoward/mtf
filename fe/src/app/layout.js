@@ -3,8 +3,7 @@ import util from "@/lib/util";
 
 export async function generateMetadata({ params }) {
   const title = "MATANUSKA FRÖNTIER TREK";
-  const description =
-    "High around the Valley :: the most kick-assiest, shinest, adventure you can do standing up in Palmer, Alaska.\n\n🐉 + 🔥 + 🌿 + ⛰️ + 🍻 + 💃🏿";
+  const description = "High around the Valley :: 🐉 + 🔥 + 🌿 + ⛰️ + 🍻 + 💃🏿";
   const images = ["/MTF-OG.png"];
   const openGraph = { title, description, images };
   const robots = { index: true };
