@@ -4,7 +4,7 @@ import emoji from "@/lib/emoji";
 
 export async function generateMetadata({ params }) {
   const title = "MATANUSKA FRÖNTIER TREK";
-  const description = `High around the Valley :: ${emoji.dragon} + ${emoji.mountain} + ${emoji.fire} + ${emoji.herb} + ${emoji.beers} + ${emoji.dancer}\n\n@ Palmer, Alaska`;
+  const description = `High around the Valley :: ${emoji.dragon} + ${emoji.mountain} + ${emoji.fire} + ${emoji.herb} + ${emoji.beers} + ${emoji.dancer}\n@ Palmer, Alaska`;
   const images = ["/MTF-OG.png"];
   const openGraph = { title, description, images };
   const robots = { index: true };
