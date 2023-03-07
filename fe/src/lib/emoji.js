@@ -1,5 +1,3 @@
-import util from "@/lib/util";
-
 class Emoji {
   static dragon = "🐉";
   static mountain = "⛰";
