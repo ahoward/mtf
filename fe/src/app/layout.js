@@ -1,23 +1,14 @@
 import "./globals.css";
-import util from "@/lib/util";
 
-class Emoji {
-  static dragon = "🐉";
-  static mountain = "⛰";
-  static fire = "🔥";
-  static herb = "🌿";
-  static beers = "🍻";
-  static dancer = "💃🏿";
-}
+import emoji from "@/lib/emoji";
 
 export async function generateMetadata({ params }) {
   const title = "MATANUSKA FRÖNTIER TREK";
-  const description = `High around the Valley :: ${Emoji.dragon} + ${Emoji.mountain} + ${Emoji.fire} + ${Emoji.herb} + ${Emoji.beers} + ${Emoji.dancer}`;
+  const description = `High around the Valley :: ${emoji.dragon} + ${emoji.mountain} + ${emoji.fire} + ${emoji.herb} + ${emoji.beers} + ${emoji.dancer}`;
   const images = ["/MTF-OG.png"];
   const openGraph = { title, description, images };
   const robots = { index: true };
   const metadata = { title, openGraph, robots };
-  util.log("debug", "metadata", metadata);
   return metadata;
 }
 

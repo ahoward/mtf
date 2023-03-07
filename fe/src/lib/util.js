@@ -10,12 +10,18 @@ class Util {
   }
 
   // where are we... ?
-  isServer() {
-    return typeof window == "undefined";
+  isServer(callback) {
+    if (typeof window === "undefined") {
+      return callback ? callback() : true;
+    }
+    return false;
   }
 
-  isClient() {
-    return !this.isServer();
+  isClient(callback) {
+    if (!this.isServer()) {
+      return callback ? callback() : true;
+    }
+    return false;
   }
 
   // actuall dir shit
