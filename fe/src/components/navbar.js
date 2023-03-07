@@ -4,15 +4,10 @@ import React from "react";
 
 import Link from "next/link";
 
-import { useRouter } from "next/navigation";
-
 import FontAwesome from "@/components/font_awesome";
 
 export default function Navbar(props) {
-  const router = useRouter();
   const [navbarOpen, setNavbarOpen] = React.useState(false);
-
-  console.dir({ pathname: router.pathname });
 
   return (
     <>
@@ -30,7 +25,7 @@ export default function Navbar(props) {
               className={
                 (props.transparent ? "text-white" : "text-gray-800") +
                 " " +
-                (props.active == "/" ? "text-white" : "text-gray-800") +
+                (props.active == "/" ? "font-bold" : "font-normal") +
                 " " +
                 "text-sm leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
               }
@@ -71,9 +66,9 @@ export default function Navbar(props) {
                   label: "Team",
                 },
                 {
-                  href: "/book-it",
+                  href: "/lets-go",
                   icon: "fa-solid fa-dragon",
-                  label: "Book it!",
+                  label: "Let's Go!",
                 },
               ].map((link) => (
                 <li key={JSON.stringify(link)} className="flex items-center">

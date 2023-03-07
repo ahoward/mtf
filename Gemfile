@@ -7,6 +7,7 @@ ruby '3.1.2'
 
 group :development, :test do
   gem 'tmuxinator', require: false
+  gem 'ak47', require: false
 end
 
 group :development do

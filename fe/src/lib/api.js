@@ -1,5 +1,6 @@
 import config from "@/lib/config";
 import util from "@/lib/util";
+import { v4 as uuidv4 } from "uuid";
 
 const urlcat = require("urlcat").default;
 
@@ -25,7 +26,10 @@ class API {
     const headers = this.headers_for(options);
     const method = this.method_for(options);
 
-    console.dir({ "api.fetch": { url: url, headers, method } });
+    const uuid = uuidv4();
+    const fetchId = `api.fetch(${uuid})`;
+
+    util.log("debug", fetchId, { request: { url: url, headers, method } });
 
     const params = {
       headers,
@@ -51,6 +55,8 @@ class API {
 
     try {
       json = await response.json();
+
+      util.log("debug", fetchId, { response: json });
     } catch (e) {
       ok = false;
       errors.push(e);

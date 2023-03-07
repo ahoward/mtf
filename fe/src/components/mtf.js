@@ -5,6 +5,7 @@ import { React, useState } from "react";
 import animate from "@huth/animate";
 
 import config from "@/lib/config";
+import util from "@/lib/util";
 
 export default function MTF(props) {
   const yellow = config.colors.yellow;
@@ -24,7 +25,7 @@ export default function MTF(props) {
   if (!animating) {
     setAnimating(true);
 
-    console.log(colors.join(", "));
+    util.log("debug", colors.join(", "));
 
     const from = colors[0];
     const to = colors[1];
@@ -44,17 +45,17 @@ export default function MTF(props) {
       },
       start: () => {
         setAnimating(true);
-        console.log("started animating...");
+        //console.log("started animating...");
         //setAnimating(true);
       },
       end: () => {
-        console.log("ended animating...");
+        //console.log("ended animating...");
         setColors([colors[1], colors[2], colors[0]]);
         setAnimating(false);
         //stopAnimating();
       },
       cancel: () => {
-        console.log("canceled animating...");
+        //console.log("canceled animating...");
         setAnimating(false);
         //stopAnimating();
       },

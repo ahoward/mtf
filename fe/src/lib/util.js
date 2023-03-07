@@ -1,6 +1,23 @@
 const traverse = require("traverse");
 
+import { Logger } from "@/lib/logger";
+
 class Util {
+  // logging
+  log(level, ...args) {
+    const logger = new Logger(level);
+    logger.log(logger.level, ...args);
+  }
+
+  // where are we... ?
+  isServer() {
+    return typeof window == "undefined";
+  }
+
+  isClient() {
+    return !this.isServer();
+  }
+
   // actuall dir shit
   //
   dir(obj, options = {}) {
@@ -61,11 +78,17 @@ class Util {
     return traverse(obj).has(path) ? path : false;
   }
 
-  get(obj, key_or_path) {
+  get(obj, key_or_path, ...args) {
     const path = this.has(obj, key_or_path);
+    const fallbackGiven = args.length > 0;
+    const fallback = fallbackGiven ? undefined : args[0];
 
     if (!path) {
-      throw new Error(`missing key ${JSON.stringify(key_or_path)}`);
+      if (fallbackGiven) {
+        return fallback;
+      } else {
+        throw new Error(`missing key ${JSON.stringify(key_or_path)}`);
+      }
     }
 
     return traverse(obj).get(path);

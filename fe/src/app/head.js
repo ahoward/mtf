@@ -3,13 +3,9 @@ import Script from "next/script";
 export default function Head() {
   return (
     <>
-      <title>Matanuska Fröniter Trek</title>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
 
-      <meta name="description" content="High around the valley" />
-
       <link rel="icon" href="/favicon.ico" />
-
       <link
         rel="apple-touch-icon"
         sizes="180x180"

@@ -14,15 +14,18 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@huth/animate": "^2.0.0",
     "@next/font": "13.1.6",
+    "chalk": "^5.2.0",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
     "next": "13.1.6",
+    "pino": "^8.11.0",
     "qs": "^6.11.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "swr": "^2.0.4",
     "traverse": "^0.6.7",
-    "urlcat": "^3.1.0"
+    "urlcat": "^3.1.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",

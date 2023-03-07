@@ -9,7 +9,28 @@ import FontAwesome from "@/components/font_awesome";
 import MTF from "@/components/mtf";
 import Navbar from "@/components/navbar";
 
-function hero_for(data) {
+class PageData {
+  static ["/home-page"] = async function () {
+    const result = await api.fetch("/home-page", {
+      populate: ["hero", "hero.image", "og", "og.images"],
+    });
+    if (!result.ok) throw new Error("no data");
+
+    const json = result.json;
+    const raw = util.get(json, "data");
+
+    const hero = {
+      key: "attributes.hero.image.data.attributes.url",
+    };
+    hero.value = util.get(raw, hero.key);
+    hero.url = api.img_url_for(hero.value);
+
+    return { result, json, raw, hero };
+  };
+}
+// export default PageData;
+
+async function heroFor(data) {
   const hero = {
     key: "attributes.hero.image.data.attributes.url",
   };
@@ -18,14 +39,48 @@ function hero_for(data) {
   return hero;
 }
 
-export default async function Home() {
+async function pageData() {
   const result = await api.fetch("/home-page", {
-    populate: ["hero", "hero.image"],
+    populate: ["hero", "hero.image", "og", "og.images"],
   });
   //if (!result.ok) throw new Error("no data");
   const data = result.json.data;
+  return data;
+}
 
-  const hero = hero_for(data);
+/*
+export async function generateMetadata({ params }) {
+  const pd = await PageData["/home-page"]();
+  const data = pd.raw();
+
+  const title = util.get(data, "attributes.og.title");
+  const description = util.get(data, "attributes.og.description");
+
+  const images = util.get(data, "attributes.og.images.data", []).map((img) => {
+    const image = {
+      url: util.get(img, "attributes.url"),
+      key: util.get(img, "attributes.url"),
+      width: util.get(img, "attributes.width"),
+      height: util.get(img, "attributes.height"),
+    };
+
+    return image;
+  });
+
+  const openGraph = { title, description, images };
+  const robots = { index: true };
+
+  const metadata = { title, openGraph, robots };
+
+  util.log("debug", { metadata });
+
+  return metadata;
+}
+*/
+
+export default async function Home() {
+  const data = await PageData["/home-page"]();
+  const hero = data.hero;
 
   return (
     <>
@@ -79,10 +134,10 @@ export default async function Home() {
                         className="bg-pink-600 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xl px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
                         type="button"
                         style={{ transition: "all .15s ease" }}
-                        href="/book-it"
+                        href="/lets-go"
                       >
+                        <FontAwesome className="fa-solid fa-dragon mr-2" />
                         Let&apos;s Go!
-                        <FontAwesome className="fa-solid fa-dragon ml-4" />
                       </a>
                     </div>
                   </div>
