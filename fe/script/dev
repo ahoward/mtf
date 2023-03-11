@@ -1,0 +1,23 @@
+#!/bin/zsh
+
+script_dir=$(dirname $0)
+root_dir=$(dirname $script_dir)
+
+chdir $root_dir
+
+rm -rf .next/cache
+
+if [ -f .node-version ]; then
+  echo "node=$(cat .node-version)"
+  export NVM_DIR=$HOME/.nvm;
+  source $NVM_DIR/nvm.sh;
+  nvm use $(cat .node-version)
+fi
+
+if [ -f .ruby-version ]; then
+  echo "ruby=$(cat .ruby-version)"
+  eval "$(rbenv init -)"
+  rbenv shell $(cat .ruby-version)
+fi
+
+next dev

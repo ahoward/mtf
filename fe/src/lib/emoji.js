@@ -6,6 +6,15 @@ class Emoji {
   static beers = "🍻";
   static dancer = "💃🏿";
 
+  static list = [
+    this.dragon,
+    this.mountain,
+    this.fire,
+    this.herb,
+    this.beers,
+    this.dancer,
+  ];
+
   constructor() {
     Object.assign(this, Emoji);
   }

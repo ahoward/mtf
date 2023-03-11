@@ -4,7 +4,7 @@
   "info": {
     "singularName": "home-page",
     "pluralName": "home-pages",
-    "displayName": "HomePage",
+    "displayName": "Home Page",
     "description": ""
   },
   "options": {
@@ -16,26 +16,14 @@
     }
   },
   "attributes": {
-    "hero": {
-      "type": "component",
-      "repeatable": false,
+    "copy": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "image.hero",
-      "required": true
-    },
-    "og": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "meta.og"
+      "type": "richtext",
+      "default": "... copy for Home Page"
     }
   }
 }

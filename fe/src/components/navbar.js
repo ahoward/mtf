@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-
 import Link from "next/link";
 
 import FontAwesome from "@/components/font_awesome";
@@ -9,27 +8,57 @@ import FontAwesome from "@/components/font_awesome";
 export default function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
+  const whack = "/";
+
+  const active = props.active || whack;
+
+  let theme;
+
+  switch (String(props.theme).trim().toLowerCase()) {
+    case "light":
+      theme = {
+        type: "light",
+        color: "text-white",
+        iconColor: "text-gray-300",
+        backgroundColor: "bg-black",
+        pink: "text-pink-500",
+      };
+      break;
+    case "dark":
+      theme = {
+        type: "dark",
+        color: "text-black",
+        iconColor: "text-gray-900",
+        backgroundColor: "bg-white",
+        pink: "text-pink-500",
+      };
+      break;
+    default:
+      throw new Error(`bad theme=${theme}`);
+  }
+
   return (
     <>
       <nav
         className={
-          (props.transparent
-            ? "top-0 absolute z-50 w-full"
-            : "relative shadow-lg bg-white shadow-lg") +
-          " flex flex-wrap items-center justify-between px-2 py-3 "
+          "top-0 absolute z-50 w-full" +
+          " " +
+          "lex flex-wrap items-center justify-between px-2 py-3 " +
+          " " +
+          (navbarOpen ? theme.backgroundColor : "")
         }
       >
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <Link
               className={
-                (props.transparent ? "text-white" : "text-gray-800") +
+                theme.color +
                 " " +
-                (props.active == "/" ? "font-bold" : "font-normal") +
+                (active == whack ? "underline" : "no-underline") +
                 " " +
-                "text-sm leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
+                "font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
               }
-              href="/"
+              href={whack}
             >
               Matanuska Fröntier Trek
             </Link>
@@ -38,18 +67,14 @@ export default function Navbar(props) {
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
-              <i
-                className={
-                  (props.transparent ? "text-white" : "text-gray-800") +
-                  " fas fa-bars"
-                }
-              ></i>
+              <i className={theme.color + " fas fa-bars"}></i>
             </button>
           </div>
           <div
             className={
-              "lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none" +
-              (navbarOpen ? " block rounded shadow-lg" : " hidden")
+              "lg:flex flex-grow items-center" +
+              " " +
+              (navbarOpen ? "block" : "hidden")
             }
             id="example-navbar-warning"
           >
@@ -69,24 +94,25 @@ export default function Navbar(props) {
                   href: "/lets-go",
                   icon: "fa-solid fa-dragon",
                   label: "Let's Go!",
+                  iconColor: theme.pink,
                 },
               ].map((link) => (
                 <li key={JSON.stringify(link)} className="flex items-center">
                   <Link
                     className={
-                      (props.transparent
-                        ? "lg:text-white lg:hover:text-gray-300 text-gray-800"
-                        : "text-gray-800 hover:text-gray-600") +
-                      " px-3 py-4 lg:py-2 flex items-center text-xs uppercase"
+                      theme.color +
+                      " " +
+                      (active == link.href ? "underline" : "no-underline") +
+                      " " +
+                      "leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
                     }
                     href={link.href}
                   >
                     <FontAwesome
                       className={
-                        (props.transparent
-                          ? "lg:text-gray-300 text-gray-500"
-                          : "text-gray-500") +
-                        ` ${link.icon} text-xl leading-lg mr-2`
+                        (link.iconColor || theme.iconColor) +
+                        " " +
+                        `${link.icon} text-xl leading-lg mr-2`
                       }
                     />
                     {link.label}
@@ -94,56 +120,6 @@ export default function Navbar(props) {
                 </li>
               ))}
             </ul>
-
-            {/*
-            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="flex items-center">
-                <a
-                  className={
-                    (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-300 text-gray-800"
-                      : "text-gray-800 hover:text-gray-600") +
-                    " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  }
-                  href="/team"
-                  title="-> Team"
-                >
-                  <i
-                    className={
-                      (props.transparent
-                        ? "lg:text-gray-300 text-gray-500"
-                        : "text-gray-500") +
-                      " fa-solid fa-people-group text-lg leading-lg "
-                    }
-                  />
-                  <span className="lg:hidden inline-block ml-2">Team</span>
-                </a>
-              </li>
-
-              <li className="flex items-center">
-                <a
-                  className={
-                    (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-300 text-gray-800"
-                      : "text-gray-800 hover:text-gray-600") +
-                    " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  }
-                  href="/book"
-                  title="-> Book It!"
-                >
-                  <i
-                    className={
-                      (props.transparent
-                        ? "lg:text-gray-300 text-gray-500"
-                        : "text-gray-500") +
-                      " fa-solid fa-calendar-check text-lg leading-lg "
-                    }
-                  />
-                  <span className="lg:hidden inline-block ml-2">Book It!</span>
-                </a>
-              </li>
-            </ul>
-            */}
           </div>
         </div>
       </nav>

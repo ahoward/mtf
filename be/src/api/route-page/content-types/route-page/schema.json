@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "route_pages",
+  "info": {
+    "singularName": "route-page",
+    "pluralName": "route-pages",
+    "displayName": "Route Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "copy": {
+      "type": "richtext",
+      "default": "... copy for Route Page",
+      "required": true
+    }
+  }
+}

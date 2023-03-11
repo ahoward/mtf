@@ -5,7 +5,6 @@ import { React, useState } from "react";
 import animate from "@huth/animate";
 
 import config from "@/lib/config";
-import util from "@/lib/util";
 
 export default function MTF(props) {
   const yellow = config.colors.yellow;
@@ -24,8 +23,6 @@ export default function MTF(props) {
 
   if (!animating) {
     setAnimating(true);
-
-    util.log("debug", colors.join(", "));
 
     const from = colors[0];
     const to = colors[1];
@@ -82,7 +79,8 @@ export default function MTF(props) {
       y="0px"
       viewBox="0 0 288 288"
       style={{ enableBackground: "new 0 0 288 288", minHeight: "150px" }}
-      className="h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16"
+      //className="h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16"
+      className="h-auto align-middle -mt-16"
     >
       <g>
         <path

@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "let_s_go_pages",
+  "info": {
+    "singularName": "let-s-go-page",
+    "pluralName": "let-s-go-pages",
+    "displayName": "Let's Go Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "copy": {
+      "type": "richtext",
+      "default": "... copy for Let's Go Page",
+      "required": true
+    }
+  }
+}
