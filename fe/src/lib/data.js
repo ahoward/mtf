@@ -15,109 +15,50 @@ class Data {
   }
 
   //
-  async ["/home-page"]() {
-    const result = await api.fetch("/home-page", {});
-
-    if (!result.ok) throw new Error("gah... bad fetch!");
-
-    const json = result.json;
-    const raw = util.get(json, "data");
-
-    const copy = util.get(raw, "attributes.copy");
-
-    return { result, json, raw, copy };
-  }
-
-  //
-  async ["/route-page"]() {
-    const result = await api.fetch("/route-page", {});
-
-    if (!result.ok) throw new Error("gah... bad fetch!");
-
-    const json = result.json;
-    const raw = util.get(json, "data");
-
-    const copy = util.get(raw, "attributes.copy");
-
-    return { result, json, raw, copy };
-  }
-
-  //
-  async ["/team-page"]() {
-    const result = await api.fetch("/team-page", {});
-
-    if (!result.ok) throw new Error("gah... bad fetch!");
-
-    const json = result.json;
-    const raw = util.get(json, "data");
-
-    const copy = util.get(raw, "attributes.copy");
-
-    return { result, json, raw, copy };
-  }
-
-  //
-  async ["/lets-go"]() {
-    const result = await api.fetch("/let-s-go-page", {});
-
-    if (!result.ok) throw new Error("gah... bad fetch!");
-
-    const json = result.json;
-    const raw = util.get(json, "data");
-
-    const copy = util.get(raw, "attributes.copy");
-
-    return { result, json, raw, copy };
-  }
-
-  //
-  async ["/hero-template"]() {
-    const result = await api.fetch("/hero-template", {
-      populate: ["hero", "hero.image"],
-    });
-
-    if (!result.ok) throw new Error("gah... bad fetch!");
-
-    const json = result.json;
-    const raw = util.get(json, "data");
-
-    const hero = {
-      key: "attributes.hero.data.attributes.url",
+  async ["/pages"](path, options = {}) {
+    const query = {
+      populate: ["image"],
+      filters: { path: { $eq: path } },
     };
-    hero.value = util.get(raw, hero.key);
-    hero.url = api.img_url_for(hero.value);
 
-    return { result, json, raw, hero };
-  }
-
-  //
-  async ["/default-template"]() {
-    const result = await api.fetch("/default-template", {
-      populate: ["hero", "hero.image"],
-    });
+    const result = await api.fetch("/pages", { query });
 
     if (!result.ok) throw new Error("gah... bad fetch!");
 
     const json = result.json;
+
     const raw = util.get(json, "data");
 
-    const hero = {
-      key: "attributes.hero.data.attributes.url",
-    };
-    hero.value = util.get(raw, hero.key);
-    hero.url = api.img_url_for(hero.value);
+    const page = util.get(raw, "0");
 
-    const rocks = [];
-    for (let i = 0; i <= 17; i++) {
-      const basename = `${i}.png`;
-      const url = `/rocks/${basename}`;
-      const alt = url;
-      const caption = url;
-      const width = 300;
-      rocks.push({ url, alt, caption, width });
+    //
+    const title = util.get(page, "attributes.title");
+    page.title = title;
+
+    //
+    const description = util.get(page, "attributes.description");
+    page.description = description;
+
+    //
+    const copy = util.get(page, "attributes.copy");
+    page.copy = copy;
+
+    //
+    const image_data = util.get(page, "attributes.image.data");
+    if (image_data) {
+      const image_url = util.get(image_data, "attributes.url");
+      const image = api.url_for(image_url);
+      page.image = image;
+    } else {
+      page.image = null;
     }
 
-    return { result, json, raw, hero, rocks };
+    return {
+      result,
+      json,
+      raw,
+      page,
+    };
   }
 }
 

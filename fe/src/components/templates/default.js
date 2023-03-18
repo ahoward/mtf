@@ -1,16 +1,13 @@
-import Data from "@/lib/data";
-import Util from "@/lib/util";
-
 import Navbar from "@/components/navbar";
 import Logo from "@/components/logo";
 import Footer from "@/components/footer";
 
 export default async function DefaultTemplate(props) {
-  const data = await Data.for("/default-template");
-  const hero = Util.get(data, "hero");
-
   const active = props.active || "/";
   const height = props.height || "700";
+
+  const backgroundImage =
+    props.backgroundImage || "/templates/default/background.jpg";
 
   return (
     <>
@@ -21,7 +18,7 @@ export default async function DefaultTemplate(props) {
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
-              backgroundImage: `url('${hero.url}')`,
+              backgroundImage: `url('${backgroundImage}')`,
             }}
           >
             <span

@@ -1,5 +1,3 @@
-import Data from "@/lib/data";
-
 import Navbar from "@/components/navbar";
 import MTF from "@/components/mtf";
 import Footer from "@/components/footer";
@@ -7,11 +5,11 @@ import Footer from "@/components/footer";
 import FontAwesome from "@/components/font_awesome";
 
 export default async function HeroTemplate(props) {
-  const data = await Data.for("/hero-template");
-  const hero = data.hero;
-
   const active = props.active || "/";
   const height = props.height || "700";
+
+  const backgroundImage =
+    props.backgroundImage || "/templates/hero/background.jpg";
 
   return (
     <>
@@ -22,7 +20,7 @@ export default async function HeroTemplate(props) {
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
-              backgroundImage: `url('${hero.url}')`,
+              backgroundImage: `url('${backgroundImage}')`,
             }}
           >
             <span

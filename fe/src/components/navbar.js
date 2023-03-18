@@ -1,4 +1,4 @@
-"use client";
+"use client"; // SEO ?
 
 import React from "react";
 import Link from "next/link";
@@ -81,13 +81,14 @@ export default function Navbar(props) {
             <ul className="flex flex-col lg:flex-row list-none mr-auto">
               {[
                 {
-                  href: "/route",
+                  href: "/about/route",
                   icon: "fa-solid fa-map-location-dot",
                   label: "Route",
                 },
                 {
-                  href: "/team",
+                  href: "/about/team",
                   icon: "fa-solid fa-face-kiss-wink-heart",
+                  //icon: "fa-solid fa-jedi",
                   label: "Team",
                 },
                 {

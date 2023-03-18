@@ -119,6 +119,10 @@ class Util {
 
     return path;
   }
+
+  strip(value) {
+    return String(value).trim().toLowerCase();
+  }
 }
 
 const util = new Util();

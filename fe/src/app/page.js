@@ -1,17 +1,9 @@
-import HeroTemplate from "@/components/templates/hero";
-import Markdown from "@/components/markdown";
+import Page from "@/lib/page";
 
-import Data from "@/lib/data";
+const path = "/";
 
-export default async function HomePage() {
-  const data = await Data.for("/home-page");
-  const copy = data.copy;
-
-  return (
-    <>
-      <HeroTemplate active="/">
-        <Markdown copy={copy} />
-      </HeroTemplate>
-    </>
-  );
+export async function generateMetadata() {
+  return await Page.metadata(path);
 }
+
+export default Page.for(path, { template: "hero" });

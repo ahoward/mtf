@@ -1,8 +1,10 @@
 "use client";
 
-import { React, useState } from "react";
+import { React, useState, useEffect, useMemo } from "react";
 
 import Image from "next/image";
+
+import logger from "@/lib/logger";
 
 import RockImg0 from "@/../public/rocks/0.png";
 import RockImg1 from "@/../public/rocks/1.png";
@@ -22,77 +24,96 @@ import RockImg14 from "@/../public/rocks/14.png";
 import RockImg15 from "@/../public/rocks/15.png";
 import RockImg16 from "@/../public/rocks/16.png";
 
-import Util from "@/lib/util";
-
 export default function Rocks(props) {
-  //  const list = Util.get(props, "list");
-  const list = [
-    RockImg0,
-    RockImg1,
-    RockImg2,
-    RockImg3,
-    RockImg4,
-    RockImg5,
-    RockImg6,
-    RockImg7,
-    RockImg8,
-    RockImg9,
-    RockImg10,
-    RockImg11,
-    RockImg12,
-    RockImg13,
-    RockImg14,
-    RockImg15,
-    RockImg16,
-  ];
+  const rocks = useMemo(() => {
+    return [
+      RockImg0,
+      RockImg1,
+      RockImg2,
+      RockImg3,
+      RockImg4,
+      RockImg5,
+      RockImg6,
+      RockImg7,
+      RockImg8,
+      RockImg9,
+      RockImg10,
+      RockImg11,
+      RockImg12,
+      RockImg13,
+      RockImg14,
+      RockImg15,
+      RockImg16,
+    ];
+  }, []);
 
-  const [rocks, setRocks] = useState(list);
+  const [state, setState] = useState({
+    ms: 42,
+    min: 0.0,
+    max: 1.0,
+    opacity: 1.0,
+    delta: -0.01,
+    index: 0,
+    rock: rocks[0],
+  });
+
   const [rock, setRock] = useState(rocks[0]);
-  const [animating, setAnimating] = useState(false);
-  const [opacity, setOpacity] = useState(100);
+  const [opacity, setOpacity] = useState(1.0);
 
-  if (!animating) {
-    setAnimating(true);
+  useEffect(() => {
+    //logger.debug("useEffect()");
 
-    let opts = {
-      min: 2,
-      max: 100,
-      inc: -1,
-      speed: 100,
-      value: 100,
-      index: 0,
-      size: rocks.length,
-      rock: rocks[0],
+    let id;
+
+    const precise = (n) => {
+      return (
+        Math.round(Math.max(Math.min(n, state.max), state.min) * 100) / 100
+      );
     };
 
-    const callback = () => {
-      //console.dir({ before: opts });
-
-      opts.value = opts.value + opts.inc;
-
-      if (opts.value == opts.min) {
-        opts.inc = -opts.inc;
-        opts.index = (opts.index + 1) % opts.size;
-      }
-
-      if (opts.value == opts.max) {
-        opts.inc = -opts.inc;
-      }
-
-      opts.rock = rocks[opts.index];
-      setOpacity(opts.value / 100);
-      setRock(opts.rock);
-
-      //console.dir({ after: opts });
+    const random = (min, max) => {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
     };
 
-    setInterval(callback, opts.speed);
-  }
+    const animate = () => {
+      state.opacity = precise(state.opacity + state.delta);
 
-  const height = 66;
+      if (state.opacity <= state.min) {
+        state.delta = -state.delta;
+        state.index = (state.index + 1) % rocks.length;
+        state.rock = rocks[state.index];
+        state.ms = random(24, 42);
+      }
+
+      if (state.opacity >= state.max) {
+        state.delta = -state.delta;
+      }
+
+      //logger.debug(state);
+
+      setRock(state.rock);
+      setOpacity(state.opacity);
+      setState(state);
+
+      id = setTimeout(() => {
+        animate();
+      }, state.ms);
+    };
+
+    animate();
+
+    return () => {
+      clearTimeout(id);
+    };
+  }, [rocks, state]);
+
+  const height = "66";
 
   return (
-    <div className={`flex flex-wrap justify-center h-${height} mb-4 mt-4`}>
+    <div
+      style={{ height }}
+      className={`flex flex-wrap justify-center h-${height} mb-4 mt-4`}
+    >
       <Image alt={""} height={height} src={rock} style={{ opacity }} />
     </div>
   );
