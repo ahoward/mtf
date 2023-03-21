@@ -1,7 +1,8 @@
+import Link from "next/link";
+
 import Navbar from "@/components/navbar";
 import MTF from "@/components/mtf";
 import Footer from "@/components/footer";
-
 import FontAwesome from "@/components/font_awesome";
 
 export default async function HeroTemplate(props) {
@@ -75,24 +76,28 @@ export default async function HeroTemplate(props) {
                   <div className="w-full lg:w-4/12 px-4 lg:order-1">
                     <div className="flex justify-center py-4 lg:pt-4 pt-8">
                       <div className="mr-4 p-3 text-center text-gray-700">
-                        <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                          <FontAwesome className="fa-mountain fa-solid fa-lg" />
-                          <br></br>
-                          99
-                        </span>
-                        <span className="text-sm text-gray-500">
-                          Miles of Mountains
-                        </span>
+                        <Link href="/about/route">
+                          <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
+                            <FontAwesome className="fa-mountain fa-solid fa-lg" />
+                            <br></br>
+                            99
+                          </span>
+                          <span className="text-sm text-gray-500">
+                            Miles of Mountains
+                          </span>
+                        </Link>
                       </div>
                       <div className="mr-4 p-3 text-center">
-                        <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                          <FontAwesome className="fa-person-hiking fa-solid fa-lg" />
-                          <br></br>
-                          33,333
-                        </span>
-                        <span className="text-sm text-gray-500">
-                          Feet of Climbing
-                        </span>
+                        <Link href="/how-does-it-even-work">
+                          <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
+                            <FontAwesome className="fa-person-hiking fa-solid fa-lg" />
+                            <br></br>
+                            33,333
+                          </span>
+                          <span className="text-sm text-gray-500">
+                            Feet of Climbing
+                          </span>
+                        </Link>
                       </div>
                       <div className="mr-4 p-3 text-center">
                         <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">

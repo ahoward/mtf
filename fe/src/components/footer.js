@@ -1,13 +1,13 @@
 import React from "react";
 
-import mailto from "mailto-link";
-
 import Link from "next/link";
+
+//import mailto from "mailto-link";
 
 import Rocks from "@/components/rocks";
 import Emoji from "@/lib/emoji";
 
-import FontAwesome from "@/components/font_awesome";
+//import FontAwesome from "@/components/font_awesome";
 
 export default function Footer(props) {
   return (
@@ -16,17 +16,14 @@ export default function Footer(props) {
 
       <div>
         <Link
-          className="text-pink-600"
-          href={mailto({
-            to: "mtf@mtf-trek.com",
-            subject: "Nice mailto lib",
-          })}
+          className="bg-cyan-400 uppercase text-white font-bold hover:shadow-md shadow text-xs p-1 rounded outline-none focus:outline-none mb-4"
+          href={"/contact"}
         >
           mtf@mtf-trek.com
         </Link>
       </div>
 
-      <div>
+      <div style={{ height: 66, margin: 8 }}>
         <Rocks />
       </div>
 

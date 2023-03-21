@@ -29,16 +29,44 @@ class Page {
     }
   }
 
-  async render() {
-    const result = await this.fetcher();
+  async header() {}
 
+  async body() {
+    const result = await this.fetcher();
     const page = Util.get(result, "page");
     const copy = Util.get(page, "copy");
+    return <Markdown copy={copy} />;
+  }
+
+  async footer() {}
+
+  async render(options = {}) {
+    const contentFor = async function (value) {
+      if (typeof value == "function") {
+        return await value();
+      } else {
+        return value;
+      }
+    };
+
+    const header = await contentFor(
+      options.header || this.options.header || this.header()
+    );
+
+    const body = await contentFor(
+      options.body || this.options.body || this.body()
+    );
+
+    const footer = await contentFor(
+      options.footer || this.options.footer || this.footer()
+    );
 
     return (
       <>
         <this.template active={this.active}>
-          <Markdown copy={copy} />
+          {header}
+          {body}
+          {footer}
         </this.template>
       </>
     );
@@ -85,7 +113,7 @@ class Page {
     const page = new Page(path, options);
 
     const component = async function () {
-      return page.render();
+      return await page.render();
     };
 
     return component;

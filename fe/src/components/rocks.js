@@ -4,8 +4,6 @@ import { React, useState, useEffect, useMemo } from "react";
 
 import Image from "next/image";
 
-import logger from "@/lib/logger";
-
 import RockImg0 from "@/../public/rocks/0.png";
 import RockImg1 from "@/../public/rocks/1.png";
 import RockImg2 from "@/../public/rocks/2.png";
@@ -25,6 +23,8 @@ import RockImg15 from "@/../public/rocks/15.png";
 import RockImg16 from "@/../public/rocks/16.png";
 
 export default function Rocks(props) {
+  const height = props.height || "66";
+
   const rocks = useMemo(() => {
     return [
       RockImg0,
@@ -82,7 +82,7 @@ export default function Rocks(props) {
         state.delta = -state.delta;
         state.index = (state.index + 1) % rocks.length;
         state.rock = rocks[state.index];
-        state.ms = random(24, 42);
+        state.ms = random(11, 42);
       }
 
       if (state.opacity >= state.max) {
@@ -107,14 +107,15 @@ export default function Rocks(props) {
     };
   }, [rocks, state]);
 
-  const height = "66";
-
   return (
-    <div
-      style={{ height }}
-      className={`flex flex-wrap justify-center h-${height} mb-4 mt-4`}
-    >
-      <Image alt={""} height={height} src={rock} style={{ opacity }} />
+    <div className={`flex flex-wrap justify-center`}>
+      <Image
+        priority={true}
+        alt={""}
+        height={height}
+        src={rock}
+        style={{ opacity }}
+      />
     </div>
   );
 }

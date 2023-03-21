@@ -7,6 +7,8 @@ class Config {
     static NEXT_PUBLIC_API_PATH = process.env.NEXT_PUBLIC_API_PATH || "/api";
     static NEXT_PUBLIC_API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
     static API_TOKEN = process.env.API_TOKEN;
+    static EMAIL_USERNAME = process.env.EMAIL_USERNAME;
+    static EMAIL_PASSWORD = process.env.EMAIL_PASSWORD;
 
     constructor() {
       let val;

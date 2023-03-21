@@ -11,7 +11,9 @@ class Data {
   async for(route, ...args) {
     const fetcher = this[route];
     if (!fetcher) throw new Error(`no fetcher for ${route}!`);
-    return await fetcher(...args);
+    let result;
+    result = await fetcher(...args);
+    return result;
   }
 
   //
@@ -25,32 +27,48 @@ class Data {
 
     if (!result.ok) throw new Error("gah... bad fetch!");
 
+    util.log("debug", result);
+
     const json = result.json;
 
     const raw = util.get(json, "data");
+    //util.log("debug", { raw });
 
-    const page = util.get(raw, "0");
+    let page;
 
-    //
-    const title = util.get(page, "attributes.title");
-    page.title = title;
+    if (raw.length == 0) {
+      const msg = `No such page: ${path}`;
 
-    //
-    const description = util.get(page, "attributes.description");
-    page.description = description;
-
-    //
-    const copy = util.get(page, "attributes.copy");
-    page.copy = copy;
-
-    //
-    const image_data = util.get(page, "attributes.image.data");
-    if (image_data) {
-      const image_url = util.get(image_data, "attributes.url");
-      const image = api.url_for(image_url);
-      page.image = image;
+      page = {
+        title: msg,
+        description: msg,
+        copy: msg,
+        image: null,
+      };
     } else {
-      page.image = null;
+      page = util.get(raw, "0");
+
+      //
+      const title = util.get(page, "attributes.title");
+      page.title = title;
+
+      //
+      const description = util.get(page, "attributes.description");
+      page.description = description;
+
+      //
+      const copy = util.get(page, "attributes.copy");
+      page.copy = copy;
+
+      //
+      const image_data = util.get(page, "attributes.image.data");
+      if (image_data) {
+        const image_url = util.get(image_data, "attributes.url");
+        const image = api.url_for(image_url);
+        page.image = image;
+      } else {
+        page.image = null;
+      }
     }
 
     return {
