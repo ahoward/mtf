@@ -50,7 +50,7 @@ export default function ContactForm(props) {
   const subject = props.subject;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="dark:text-gray-100">
       <fieldset className="flex mb-4">
         <input
           placeholder="Your name..."
