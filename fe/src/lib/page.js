@@ -96,10 +96,10 @@ class Page {
     }
 
     if (image) {
-      openGraph.image = image;
+      openGraph.images = [image];
     }
 
-    Util.log("debug", { metadata });
+    //Util.log("debug", { metadata });
 
     return metadata;
   }
@@ -119,10 +119,16 @@ class Page {
     return component;
   }
 
-  static async metadata(path, options = {}) {
-    const page = new Page(path, options);
-
+  static async metadata(path) {
+    //return async function () {
+    const page = new Page(path);
     return await page.metadata();
+    //};
+  }
+
+  static async render(path, ...args) {
+    const page = new Page(path);
+    return await page.render(...args);
   }
 }
 

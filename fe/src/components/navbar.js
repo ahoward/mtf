@@ -81,12 +81,12 @@ export default function Navbar(props) {
             <ul className="flex flex-col lg:flex-row list-none mr-auto">
               {[
                 {
-                  href: "/about/route",
+                  href: "/route",
                   icon: "fa-solid fa-map-location-dot",
                   label: "Route",
                 },
                 {
-                  href: "/about/team",
+                  href: "/team",
                   icon: "fa-solid fa-face-kiss-wink-heart",
                   //icon: "fa-solid fa-jedi",
                   label: "Team",

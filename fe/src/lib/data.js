@@ -27,7 +27,7 @@ class Data {
 
     if (!result.ok) throw new Error("gah... bad fetch!");
 
-    util.log("debug", result);
+    //util.log("debug", result);
 
     const json = result.json;
 

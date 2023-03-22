@@ -1,6 +1,6 @@
 import Page from "@/lib/page";
 
-const PATH = "/how-does-it-even-work";
+const PATH = "/gearlist";
 
 export default Page.for(PATH);
 

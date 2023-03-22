@@ -1,3 +1,5 @@
+import path from "path";
+
 const traverse = require("traverse");
 
 import { Logger } from "@/lib/logger";

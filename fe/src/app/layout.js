@@ -1,8 +1,9 @@
 import "./globals.css";
 
+/*
 import emoji from "@/lib/emoji";
 
-export async function generateMetadata() {
+export async function generateMetadata({ params, searchParams }) {
   const title = "MATANUSKA FRÖNTIER TREK";
 
   const description = `High around the Valley :: ${emoji.list.join(
@@ -17,6 +18,7 @@ export async function generateMetadata() {
 
   return metadata;
 }
+*/
 
 export default function RootLayout({ children }) {
   return (

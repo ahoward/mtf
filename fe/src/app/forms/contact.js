@@ -1,7 +1,5 @@
 "use client";
 
-// import { useState, useEffect, useRef } from "react";
-
 import { useForm } from "react-hook-form";
 
 import util from "@/lib/util";
@@ -16,9 +14,8 @@ export default function ContactForm(props) {
       message: util.get(params, "message"),
     };
 
-    const from = form.email;
     const subject = `[MTF] Contact (${form.name} / ${form.email})`;
-    //const message = `NAME: ${form.name}\nEMAIL:${form.email}\n\n--\n\n${form.message}`;
+    const from = form.email;
     const message = form.message;
 
     const data = {
