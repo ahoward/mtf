@@ -22,19 +22,6 @@
       "type": "richtext",
       "default": "# Write Me!",
       "required": true
-    },
-    "title": {
-      "type": "string"
-    },
-    "description": {
-      "type": "text"
-    },
-    "image": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false
     }
   }
 }
