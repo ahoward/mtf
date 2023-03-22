@@ -30,7 +30,6 @@ export default function Head() {
         id="fontawesome"
         src="https://kit.fontawesome.com/c6bd86d823.js"
       />
-      <meta property="og:image:type" content="image/png" />
     </>
   );
 }
