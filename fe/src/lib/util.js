@@ -3,6 +3,7 @@ import path from "path";
 const traverse = require("traverse");
 const urlcat = require("urlcat").default;
 
+import Emoji from "@/lib/emoji";
 import Config from "@/lib/config";
 import { Logger } from "@/lib/logger";
 
@@ -29,6 +30,31 @@ class Util {
     } else {
       return this.be_url_for(...args);
     }
+  }
+
+  // og helper
+  async generateMetadata(options = {}) {
+    const title = options.title || "MATANUSKA FRÖNTIER TREK";
+
+    const description =
+      options.description ||
+      `High around the Valley :: ${Emoji.list.join("+")}\n@ Palmer, Alaska`;
+
+    const images = [
+      {
+        url: util.fe_url_for(options.image || "/og/olive-and-cash-og.png"),
+        width: 1200,
+        height: 630,
+      },
+    ];
+
+    const openGraph = { title, description, images };
+
+    const robots = { index: true };
+
+    const metadata = { title, openGraph, robots };
+
+    return metadata;
   }
 
   be_url_for(path, options = {}) {

@@ -4,7 +4,6 @@ export default function Head() {
   return (
     <>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <meta property="og:image:type" content="image/png" />
       <link rel="icon" href="/favicon.ico" />
       <link
         rel="apple-touch-icon"
@@ -31,6 +30,7 @@ export default function Head() {
         id="fontawesome"
         src="https://kit.fontawesome.com/c6bd86d823.js"
       />
+      <meta property="og:image:type" content="image/png" />
     </>
   );
 }

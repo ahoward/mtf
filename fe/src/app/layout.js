@@ -1,15 +1,24 @@
 import "./globals.css";
 
-import emoji from "@/lib/emoji";
 import util from "@/lib/util";
 
-export async function generateMetadata({ params, searchParams }) {
+export async function generateMetadata() {
+  return await util.generateMetadata();
+}
+/*
+export async function generateMetadata(...args) {
   const title = "MATANUSKA FRÖNTIER TREK";
 
   const description = `High around the Valley :: ${emoji.list.join(
     "+"
   )}\n@ Palmer, Alaska`;
-  const images = [util.fe_url_for("/MTF-OG.png")];
+  const images = [
+    {
+      url: util.fe_url_for("/og/olive-and-cash-og.png"),
+      width: 1200,
+      height: 630,
+    },
+  ];
   const openGraph = { title, description, images };
 
   const robots = { index: true };
@@ -18,6 +27,7 @@ export async function generateMetadata({ params, searchParams }) {
 
   return metadata;
 }
+*/
 
 export default function RootLayout({ children }) {
   return (
