@@ -49,6 +49,11 @@ class Data {
       page = util.get(raw, "0");
 
       //
+      const copy = util.get(page, "attributes.copy");
+      page.copy = copy;
+
+      /*
+      //
       const title = util.get(page, "attributes.title");
       page.title = title;
 
@@ -69,6 +74,7 @@ class Data {
       } else {
         page.image = null;
       }
+      */
     }
 
     return {
