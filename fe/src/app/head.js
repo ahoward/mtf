@@ -45,11 +45,7 @@ export default function Head() {
       <meta property="og:image:height" content="630" />
       <meta
         property="og:image:url"
-        content="https://matanuskafrontiertrek.com/og/olive-and-cash-og.png"
-      />
-      <meta
-        property="og:image:secure_url"
-        content="https://matanuskafrontiertrek.com/og/olive-and-cash-og.png"
+        content="http://static.mtf-trek.com/og/olive-and-cash.png"
       />
     </>
   );
