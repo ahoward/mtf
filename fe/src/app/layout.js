@@ -1,6 +1,7 @@
 import "./globals.css";
 
 import emoji from "@/lib/emoji";
+import util from "@/lib/util";
 
 export async function generateMetadata({ params, searchParams }) {
   const title = "MATANUSKA FRÖNTIER TREK";
@@ -8,7 +9,7 @@ export async function generateMetadata({ params, searchParams }) {
   const description = `High around the Valley :: ${emoji.list.join(
     "+"
   )}\n@ Palmer, Alaska`;
-  const images = ["/MTF-OG.png"];
+  const images = [util.fe_url_for("/MTF-OG.png")];
   const openGraph = { title, description, images };
 
   const robots = { index: true };

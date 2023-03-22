@@ -1,10 +1,43 @@
 import path from "path";
 
 const traverse = require("traverse");
+const urlcat = require("urlcat").default;
 
+import Config from "@/lib/config";
 import { Logger } from "@/lib/logger";
 
 class Util {
+  // url helpers
+  fe_url(...args) {
+    if (args.length == 0) {
+      return Config.env.NEXT_PUBLIC_FE_URL;
+    } else {
+      return this.fe_url_for(...args);
+    }
+  }
+
+  fe_url_for(path, options = {}) {
+    const url = this.fe_url();
+    const path_info = `${path}`.replace(/[/]{2,}/, "/");
+    const query = options.query || options;
+    return urlcat(url, path_info, query);
+  }
+
+  be_url(...args) {
+    if (args.length == 0) {
+      return Config.env.NEXT_PUBLIC_be_URL;
+    } else {
+      return this.be_url_for(...args);
+    }
+  }
+
+  be_url_for(path, options = {}) {
+    const url = this.be_url();
+    const path_info = `${path}`.replace(/[/]{2,}/, "/");
+    const query = options.query || options;
+    return urlcat(url, path_info, query);
+  }
+
   // logging
   log(level, ...args) {
     const logger = new Logger(level);
