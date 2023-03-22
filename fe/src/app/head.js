@@ -44,6 +44,10 @@ export default function Head() {
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta
+        property="og:image:url"
+        content="https://matanuskafrontiertrek.com/og/olive-and-cash-og.png"
+      />
+      <meta
         property="og:image:secure_url"
         content="https://matanuskafrontiertrek.com/og/olive-and-cash-og.png"
       />
