@@ -1,6 +1,5 @@
 import "./globals.css";
 
-/*
 import emoji from "@/lib/emoji";
 
 export async function generateMetadata({ params, searchParams }) {
@@ -18,7 +17,6 @@ export async function generateMetadata({ params, searchParams }) {
 
   return metadata;
 }
-*/
 
 export default function RootLayout({ children }) {
   return (
