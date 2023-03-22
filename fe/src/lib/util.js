@@ -26,10 +26,32 @@ class Util {
 
   be_url(...args) {
     if (args.length == 0) {
-      return Config.env.NEXT_PUBLIC_be_URL;
+      return Config.env.NEXT_PUBLIC_BE_URL;
     } else {
       return this.be_url_for(...args);
     }
+  }
+
+  be_url_for(path, options = {}) {
+    const url = this.be_url();
+    const path_info = `${path}`.replace(/[/]{2,}/, "/");
+    const query = options.query || options;
+    return urlcat(url, path_info, query);
+  }
+
+  insecure_url(...args) {
+    if (args.length == 0) {
+      return "http://static.mtf-trek.com";
+    } else {
+      return this.insecure_url_for(...args);
+    }
+  }
+
+  insecure_url_for(path, options = {}) {
+    const url = this.insecure_url();
+    const path_info = `${path}`.replace(/[/]{2,}/, "/");
+    const query = options.query || options;
+    return urlcat(url, path_info, query);
   }
 
   // og helper
@@ -43,7 +65,7 @@ class Util {
     const images = [
       {
         //url: util.fe_url_for(options.image || "/og/olive-and-cash-og.png"),
-        url: util.fe_url_for(options.image || "/og/mtf-og.png"),
+        url: util.insecure_url_for(options.image || "/og/olive-and-cash.png"),
         width: 1200,
         height: 630,
       },

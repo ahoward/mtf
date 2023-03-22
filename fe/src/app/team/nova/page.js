@@ -1,9 +1,9 @@
 import Page from "@/lib/page";
+import Util from "@/lib/util";
 
-const PATH = "/team/nova";
-
-export default Page.for(PATH);
+export default Page.for("/team/nova");
 
 export async function generateMetadata() {
-  return await Page.metadata(PATH);
+  const image = "/og/nova-hamburger.png";
+  return await Util.generateMetadata({ image });
 }

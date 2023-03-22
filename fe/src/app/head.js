@@ -32,21 +32,6 @@ export default function Head() {
         id="fontawesome"
         src="https://kit.fontawesome.com/c6bd86d823.js"
       />
-
-      <title>MATANUSKA FRÖNTIER TREK</title>
-      <meta name="robots" content="index" />
-      <meta property="og:title" content="MATANUSKA FRÖNTIER TREK" />
-      <meta
-        property="og:description"
-        content="High around the Valley :: 🐉+⛰+🔥+🌿+🍻+💃🏿
-@ Palmer, Alaska"
-      />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta
-        property="og:image:url"
-        content="http://static.mtf-trek.com/og/olive-and-cash.png"
-      />
     </>
   );
 }
