@@ -2,9 +2,9 @@ import "./globals.css";
 
 import util from "@/lib/util";
 
-export async function generateMetadata() {
-  return await util.generateMetadata();
-}
+//export async function generateMetadata() {
+//return await util.generateMetadata();
+//}
 
 export default function RootLayout({ children }) {
   return (
