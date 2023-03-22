@@ -48,7 +48,7 @@ class Util {
       },
     ];
 
-    const openGraph = { title, description, images };
+    const openGraph = { title, description };
 
     const robots = { index: true };
 
