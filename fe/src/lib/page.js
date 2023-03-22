@@ -84,7 +84,7 @@ class Page {
 
     const robots = { index: true };
 
-    const metadata = { openGraph, robots };
+    const metadata = { robots };
 
     if (title) {
       metadata.title = title;
@@ -97,6 +97,10 @@ class Page {
 
     if (image) {
       openGraph.images = [image];
+    }
+
+    if (!Object.keys(openGraph).length == 0) {
+      metadata.openGraph = openGraph;
     }
 
     //Util.log("debug", { metadata });
