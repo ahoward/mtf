@@ -21,6 +21,7 @@
     "eslint-config-next": "13.1.6",
     "mailto-link": "^2.0.0",
     "next": "13.1.6",
+    "nextjs-google-analytics": "^2.3.3",
     "nodemailer": "^6.9.1",
     "pino": "^8.11.0",
     "qs": "^6.11.0",
