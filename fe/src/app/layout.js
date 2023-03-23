@@ -1,8 +1,7 @@
 import "./globals.css";
 
 import Util from "@/lib/util";
-//import GA from "@/components/ga";
-//<GA />
+import GA from "@/components/ga";
 
 export async function generateMetadata() {
   return await Util.generateMetadata();
@@ -16,6 +15,7 @@ export default function RootLayout({ children }) {
         head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
+      <GA />
       <body>{children}</body>
     </html>
   );
