@@ -9,7 +9,6 @@ export default function GA(props) {
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-PM582924EC');
   `;
   return (
