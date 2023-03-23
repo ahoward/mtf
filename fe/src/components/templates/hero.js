@@ -76,7 +76,7 @@ export default async function HeroTemplate(props) {
                   <div className="w-full lg:w-4/12 px-4 lg:order-1">
                     <div className="flex justify-center py-4 lg:pt-4 pt-8">
                       <div className="mr-4 p-3 text-center text-gray-700">
-                        <Link href="/about/route">
+                        <Link href="/route">
                           <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
                             <FontAwesome className="fa-mountain fa-solid fa-lg" />
                             <br></br>
