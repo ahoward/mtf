@@ -1,3 +1,13 @@
 import Page from "@/lib/page";
+import ContactForm from "@/app/forms/contact";
 
-export default Page.for("/lets-go/fkt");
+const footer = function () {
+  return (
+    <>
+      <br></br>
+      <ContactForm type="FKT" />
+    </>
+  );
+};
+
+export default Page.for("/lets-go/fkt", { footer });

@@ -14,7 +14,11 @@ export default function ContactForm(props) {
       message: util.get(params, "message"),
     };
 
-    const subject = `[MTF] Contact (${form.name} / ${form.email})`;
+    const type = props.type || "Contact";
+
+    const subject =
+      props.subject || `[MTF -- ${type}] (${form.name} / ${form.email})`;
+
     const from = form.email;
     const message = form.message;
 

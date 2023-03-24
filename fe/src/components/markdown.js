@@ -26,8 +26,8 @@ export default async function Markdown(props) {
     .use(remarkParse)
     .use(imgLinks, { absolutePath })
     .use(remarkGfm, { singleTilde: false, stringLength: stringWidth })
-    .use(remarkRehype)
-    .use(rehypeStringify)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeStringify, { allowDangerousHtml: true })
     .process(markdown);
 
   const __html = String(result);
@@ -40,8 +40,8 @@ export default async function Markdown(props) {
     "prose",
     //"lg-prose-xl",
     "prose-a:text-pink-600 hover:prose-a:text-pink-800",
-    "prose-img:w-auto",
-    //"prose-img:w-full",
+    //"prose-img:w-auto",
+    "prose-img:w-full",
     //"prose-img:w-full prose-img:w-auto",
     //"prose-li:text-gray-600 prose-ul:list-inside prose-ol:list-inside prose-li:marker:text-pink-600",
     "prose-ul:list-inside prose-ol:list-inside prose-li:marker:text-pink-600",

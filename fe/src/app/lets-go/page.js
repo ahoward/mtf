@@ -4,6 +4,6 @@ import Util from "@/lib/util";
 export default Page.for("/lets-go");
 
 export async function generateMetadata() {
-  const title = "#WOOT! Let's goooooooooo! 🤘";
+  const title = "Let's goooooooooo! 🤘";
   return await Util.generateMetadata({ title });
 }
