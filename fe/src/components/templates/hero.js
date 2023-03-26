@@ -100,14 +100,16 @@ export default async function HeroTemplate(props) {
                         </Link>
                       </div>
                       <div className="mr-4 p-3 text-center">
-                        <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                          <FontAwesome className="fa-brands fa-pagelines fa-solid fa-lg" />
-                          <br></br>
-                          420
-                        </span>
-                        <span className="text-sm text-gray-500">
-                          Levels of Awesome
-                        </span>
+                        <Link href="/par-tay">
+                          <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
+                            <FontAwesome className="fa-brands fa-pagelines fa-solid fa-lg" />
+                            <br></br>
+                            420
+                          </span>
+                          <span className="text-sm text-gray-500">
+                            Levels of Awesome
+                          </span>
+                        </Link>
                       </div>
                     </div>
                   </div>

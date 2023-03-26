@@ -19,7 +19,7 @@ export default function Footer(props) {
           className="bg-cyan-400 uppercase text-white font-bold hover:shadow-md shadow text-xs p-1 rounded outline-none focus:outline-none mb-4"
           href={"/contact"}
         >
-          mtf@mtf-trek.com
+          KON·TACT[mtf@mtf-trek.com]
         </Link>
       </div>
 
