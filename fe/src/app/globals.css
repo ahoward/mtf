@@ -104,12 +104,19 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  opacity: 0.80;
-}
-
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+/* ara's shit... */
+/* https: //dev.to/deammer/embed-responsive-youtube-videos-in-2021-5dkh#using-the-aspectratio-property */
+a:hover {
+  opacity: 0.80;
+}
+
+.video {
+  aspect-ratio: 16 / 9;
+  width: 100%;
 }

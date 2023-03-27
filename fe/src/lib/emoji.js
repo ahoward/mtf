@@ -5,6 +5,7 @@ class Emoji {
   static herb = "🌿";
   static beers = "🍻";
   static dancer = "💃🏿";
+  static music = "🎵";
 
   static list = [
     this.dragon,

@@ -2,8 +2,7 @@ import React from "react";
 
 import Link from "next/link";
 
-//import mailto from "mailto-link";
-
+import Config from "@/lib/config";
 import Rocks from "@/components/rocks";
 import Emoji from "@/lib/emoji";
 
@@ -16,10 +15,10 @@ export default function Footer(props) {
 
       <div>
         <Link
-          className="bg-cyan-400 uppercase text-white font-bold hover:shadow-md shadow text-xs p-1 rounded outline-none focus:outline-none mb-4"
+          className="bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs p-1 rounded outline-none focus:outline-none mb-4"
           href={"/contact"}
         >
-          KON·TACT[mtf@mtf-trek.com]
+          KON·TACT[[ mtf@mtf-trek.com ]]
         </Link>
       </div>
 
@@ -33,7 +32,12 @@ export default function Footer(props) {
       >
         {Emoji.list.join(" + ")}
       </div>
-      <div className="py-1 text-xs">© 2023-2420, MTF-TREK, LLC.</div>
+      <div className="py-1 text-xs text-cyan-400">
+        © 2023-2420, MTF-TREK, LLC.
+      </div>
+      <Link href={"/music"} title="Drink me!">
+        <span style={{ color: Config.colors.fireweed }}> {Emoji.music} </span>
+      </Link>
     </div>
   );
 }
