@@ -5,6 +5,14 @@ import MTF from "@/components/mtf";
 import Footer from "@/components/footer";
 import FontAwesome from "@/components/font_awesome";
 
+/*
+                      <Link
+                        href="https://letmegooglethat.com/?q=MTF+Matanuska"
+                        target="_blank"
+                      >
+                      </Link>
+*/
+
 export default async function HeroTemplate(props) {
   const active = props.active || "/";
   const height = props.height || "700";

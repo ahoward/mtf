@@ -17,13 +17,16 @@ export default function Footer(props) {
         <Link
           className="bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs p-1 rounded outline-none focus:outline-none mb-4"
           href={"/contact"}
+          title="Kon·Tact!"
         >
           KON·TACT[[ mtf@mtf-trek.com ]]
         </Link>
       </div>
 
       <div style={{ height: 66, margin: 8 }}>
-        <Rocks />
+        <Link href={"/rocks"} title="Rock on!">
+          <Rocks />
+        </Link>
       </div>
 
       <div
@@ -38,6 +41,8 @@ export default function Footer(props) {
       <Link href={"/music"} title="Drink me!">
         <span style={{ color: Config.colors.fireweed }}> {Emoji.music} </span>
       </Link>
+      <br />
+      <br />
     </div>
   );
 }
