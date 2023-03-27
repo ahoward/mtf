@@ -28,6 +28,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.7",
+    "rehype-external-links": "^2.0.1",
     "rehype-stringify": "^9.0.3",
     "remark": "^14.0.2",
     "remark-gfm": "^3.0.1",

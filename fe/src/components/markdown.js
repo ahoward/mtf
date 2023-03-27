@@ -5,6 +5,7 @@ import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
+import rehypeExternalLinks from "rehype-external-links";
 import rehypeStringify from "rehype-stringify";
 import stringWidth from "string-width";
 
@@ -27,6 +28,7 @@ export default async function Markdown(props) {
     .use(imgLinks, { absolutePath })
     .use(remarkGfm, { singleTilde: false, stringLength: stringWidth })
     .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeExternalLinks, { rel: ["nofollow"], target: "_blank" })
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(markdown);
 
