@@ -64,7 +64,9 @@ class Util {
 
     const images = [
       {
-        url: util.insecure_url_for(options.image || "/og/olive-and-cash.png"),
+        url:
+          options.image ||
+          "http://res.cloudinary.com/mtf/image/upload/v1680040192/og/olive-and-cash.png",
         width: 1200,
         height: 630,
       },

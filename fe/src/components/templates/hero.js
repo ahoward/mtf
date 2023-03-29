@@ -18,7 +18,9 @@ export default async function HeroTemplate(props) {
   const height = props.height || "700";
 
   const backgroundImage =
-    props.backgroundImage || "/templates/hero/background.jpg";
+    //props.backgroundImage || "/templates/hero/background.jpg";
+    props.backgroundImage ||
+    "https://res.cloudinary.com/mtf/image/upload/v1680114111/templates/hero/hero-background.jpg";
 
   return (
     <>

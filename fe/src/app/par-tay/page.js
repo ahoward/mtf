@@ -2,10 +2,9 @@ import Page from "@/lib/page";
 import Util from "@/lib/util";
 
 const path = "/par-tay";
-const video =
-  "https://strapi.matanuskafrontiertrek.com/uploads/PXL_20220703_061618859_89c1a1c826.mp4?updated_at=2023-03-26T20:14:25.008Z";
 const title = "MTF === Par Tay!";
-const image = "/og/glitter.png";
+const image =
+  "http://res.cloudinary.com/mtf/image/upload/v1680040192/og/glitter.png";
 
 const header = function () {
   return <></>;
