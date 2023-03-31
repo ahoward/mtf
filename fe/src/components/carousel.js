@@ -79,7 +79,7 @@ export default function Carousel(props) {
         const i = randomNumber(0, list.length);
         setIndex(i);
       }
-    }, 420 * 10);
+    }, 420 * 10 * 2);
 
     setTimer(id);
   }
