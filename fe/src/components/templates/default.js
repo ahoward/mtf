@@ -13,7 +13,7 @@ export default async function DefaultTemplate(props) {
 
   return (
     <>
-      <Navbar active={active} theme="dark" />
+      <Navbar active={active} theme="light" />
 
       <main className="default-template">
         <section className="relative block" style={{ height: `${height}px` }}>

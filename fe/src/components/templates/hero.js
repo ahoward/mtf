@@ -25,7 +25,7 @@ export default async function HeroTemplate(props) {
 
   return (
     <>
-      <Navbar active={active} theme="light" />
+      <Navbar active={active} theme="dark" />
 
       <main className="hero-template">
         <section className="relative block" style={{ height: `${height}px` }}>
