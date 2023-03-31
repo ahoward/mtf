@@ -4,7 +4,7 @@ import Util from "@/lib/util";
 const path = "/music";
 const title = "K-MTF RAWWWWWK ⚡!!!";
 const image =
-  "https://res.cloudinary.com/mtf/image/upload/v1680040191/og/music.png";
+  "http://res.cloudinary.com/mtf/image/upload/v1680040191/og/music.png";
 
 const header = function () {
   return <></>;
