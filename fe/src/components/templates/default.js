@@ -9,7 +9,7 @@ export default async function DefaultTemplate(props) {
   const backgroundImage =
     //props.backgroundImage || "/templates/default/background.jpg";
     props.backgroundImage ||
-    "https://res.cloudinary.com/mtf/image/upload/v1680114226/templates/default/default-background.jpg";
+    "https://res.cloudinary.com/mtf/image/upload/v1680114111/templates/hero/hero-background.jpg";
 
   return (
     <>

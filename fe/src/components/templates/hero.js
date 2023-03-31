@@ -20,7 +20,8 @@ export default async function HeroTemplate(props) {
   const backgroundImage =
     //props.backgroundImage || "/templates/hero/background.jpg";
     props.backgroundImage ||
-    "https://res.cloudinary.com/mtf/image/upload/v1680114111/templates/hero/hero-background.jpg";
+    //"https://res.cloudinary.com/mtf/image/upload/v1680114111/templates/hero/hero-background.jpg";
+    "https://res.cloudinary.com/mtf/image/upload/v1680114226/templates/default/default-background.jpg";
 
   return (
     <>
