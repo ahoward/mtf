@@ -7,6 +7,17 @@ import util from "@/lib/util";
 export default function ContactForm(props) {
   const { register, handleSubmit, reset } = useForm();
 
+  let name = props.name;
+  let email = props.email;
+  let message = props.message;
+
+  let anonymous = !!props.anonymous;
+
+  if (anonymous) {
+    name = "ANONYMOUS";
+    email = "no-reply@mtf-trek.com";
+  }
+
   const onSubmit = function (params = {}) {
     const form = {
       name: util.get(params, "name"),
@@ -39,9 +50,13 @@ export default function ContactForm(props) {
       body: JSON.stringify(data),
     });
 
-    alert(
-      `Got it '${form.name}'\nWe'll get back you you __ASAP__ at\n\t ${form.email}\nHope you typed that ^email^ right 😂!?`
-    );
+    if (anonymous) {
+      alert(`Got it - Thanks for you feedback!`);
+    } else {
+      alert(
+        `Got it '${form.name}'\nWe'll get back you you __ASAP__ at\n\t ${form.email}\nHope you typed that ^email^ right 😂!?`
+      );
+    }
 
     reset();
 
@@ -52,15 +67,21 @@ export default function ContactForm(props) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="dark:text-gray-100">
-      <fieldset className="flex mb-4">
+      <fieldset
+        className="flex mb-4"
+        style={{ display: anonymous ? "none" : "block" }}
+      >
         <input
           placeholder="Your name..."
           {...register("name", { required: true })}
           className="w-full p-2"
+          value={name}
         />
       </fieldset>
-
-      <fieldset className="flex mb-4">
+      <fieldset
+        className="flex mb-4"
+        style={{ display: anonymous ? "none" : "block" }}
+      >
         <input
           placeholder="Your email..."
           {...register("email", {
@@ -68,22 +89,21 @@ export default function ContactForm(props) {
             //pattern: /^[^@\s]+@[^@\s]+$/i,
           })}
           className="w-full p-2"
+          value={email}
         />
       </fieldset>
-
       <fieldset className="flex mb-4">
         <textarea
-          placeholder="Your secret message!"
+          placeholder="Say anything! ;-)"
           {...register("message", {
             required: true,
           })}
           className="w-full p-2"
           rows={11}
+          value={message}
         />
       </fieldset>
-
       <br></br>
-
       <button
         type="submit"
         className="bg-pink-400 uppercase text-white font-bold hover:shadow-md shadow p-1 rounded outline-none focus:outline-none mb-4"

@@ -1,15 +1,15 @@
 "use client";
 
-import { React, useState } from "react";
+import { React, useState, useRef } from "react";
 import { CldImage } from "next-cloudinary";
 import FontAwesome from "@/components/font_awesome";
 
 export default function Carousel(props) {
   const [index, setIndex] = useState(0);
+  const [list, setList] = useState(props.list || props.media || []);
 
-  const list = props.list || props.media || [];
-
-  if (list.length == 0) return <></>;
+  const [clicked, setClicked] = useState(false);
+  const [timer, setTimer] = useState(null);
 
   const current = list[index];
   let media;
@@ -48,6 +48,14 @@ export default function Carousel(props) {
   }
 
   const show = (i) => {
+    //try {
+    setClicked(true);
+
+    if (timer) {
+      clearInterval(timer);
+      setTimer(null);
+    }
+    //} catch (e) {}
     setIndex(i);
   };
 
@@ -60,6 +68,21 @@ export default function Carousel(props) {
     const i = Math.abs(index + 1) % list.length;
     show(i);
   };
+
+  if (!timer) {
+    function randomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min) + min);
+    }
+
+    const id = setInterval(() => {
+      if (!clicked) {
+        const i = randomNumber(0, list.length);
+        setIndex(i);
+      }
+    }, 420 * 10);
+
+    setTimer(id);
+  }
 
   return (
     <div className="text-center">
