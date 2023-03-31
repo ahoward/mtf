@@ -1,10 +1,21 @@
 import Page from "@/lib/page";
 import Util from "@/lib/util";
 
-export default Page.for("/team/marci");
+const path = "/team/marci";
+const title = "Raised by goats";
+const image =
+  "http://res.cloudinary.com/mtf/image/upload/v1680040190/og/marci-sparkler.png";
+
+const header = function () {
+  return <></>;
+};
+
+const footer = function () {
+  return <></>;
+};
+
+export default Page.for(path, { header, footer });
 
 export async function generateMetadata() {
-  const title = "Raised by goats";
-  const image = "/og/marci-sparkler.png";
   return await Util.generateMetadata({ title, image });
 }
