@@ -2,19 +2,16 @@ import Page from "@/lib/page";
 import Util from "@/lib/util";
 
 const path = "/music";
-const video = "";
 const title = "K-MTF RAWWWWWK ⚡!!!";
-const image = "/og/music.png";
+const image =
+  "https://res.cloudinary.com/mtf/image/upload/v1680040191/og/music.png";
 
 const header = function () {
   return <></>;
 };
 
 const footer = function () {
-  return (
-    <>
-    </>
-  );
+  return <></>;
 };
 
 export default Page.for(path, { header, footer });
