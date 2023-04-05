@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import Navbar from "@/components/navbar";
 import MTF from "@/components/mtf";
+import Logo from "@/components/logo";
 import Footer from "@/components/footer";
 import FontAwesome from "@/components/font_awesome";
 
